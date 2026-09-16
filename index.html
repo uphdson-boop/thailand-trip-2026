@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰国四人行 2026 · 卡伦海滩-清迈-曼谷</title>
+<meta name="description" content="吉隆坡→普吉岛卡伦海滩→清迈→曼谷→回国 四人行程攻略">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏝️</text></svg>">
+<style>
+  :root{
+    --sand:#fdf8f0;
+    --sand-2:#f5ead9;
+    --ink:#22303c;
+    --ink-soft:#5b6b76;
+    --teal:#0f7d8c;
+    --teal-deep:#0a5c68;
+    --coral:#ef6a4c;
+    --coral-soft:#fdece6;
+    --gold:#e0a640;
+    --green-ok:#2f9e5b;
+    --green-ok-bg:#e7f6ec;
+    --amber-warn:#b3781c;
+    --amber-warn-bg:#fdf1dc;
+    --line:#e7ddc9;
+    --card:#ffffff;
+    --radius:16px;
+    --shadow:0 2px 14px rgba(34,48,60,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --sand:#181d22; --sand-2:#20262c; --ink:#eef2f4; --ink-soft:#a9b6bf;
+      --card:#232a31; --line:#333d45; --coral-soft:#3a2620;
+      --green-ok-bg:#173226; --amber-warn-bg:#3a2f15;
+      --shadow:0 2px 14px rgba(0,0,0,0.35);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;
+    line-height:1.55;
+    padding-bottom:40px;
+  }
+  a{color:var(--teal-deep);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px;}
+
+  header.hero{
+    background:linear-gradient(160deg,var(--teal) 0%,var(--teal-deep) 60%);
+    color:#fff;
+    padding:28px 16px 22px;
+    border-radius:0 0 28px 28px;
+    box-shadow:var(--shadow);
+  }
+  header.hero .wrap{display:flex;flex-direction:column;gap:10px;}
+  .hero-eyebrow{font-size:13px;opacity:.85;letter-spacing:.04em;}
+  .hero-title{font-size:24px;font-weight:800;margin:0;}
+  .hero-sub{font-size:14px;opacity:.92;}
+  .hero-route{
+    display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+    font-size:13px;font-weight:600;margin-top:6px;
+  }
+  .hero-route span.node{background:rgba(255,255,255,.16);padding:4px 10px;border-radius:999px;}
+  .hero-route span.arrow{opacity:.7;}
+  .stat-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .stat-pill{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:12px;padding:8px 12px;font-size:12px;flex:1;min-width:90px;
+  }
+  .stat-pill b{display:block;font-size:16px;font-weight:800;}
+
+  nav.tabs{
+    position:sticky;top:0;z-index:20;
+    background:var(--sand);
+    border-bottom:1px solid var(--line);
+    padding:10px 0;
+    margin-top:18px;
+  }
+  nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  nav.tabs .wrap::-webkit-scrollbar{display:none;}
+  nav.tabs button{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-soft);
+    padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;
+    cursor:pointer;white-space:nowrap;
+  }
+  nav.tabs button.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+
+  main{margin-top:18px;}
+  section.panel{display:none;}
+  section.panel.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+  h2.sec-title{font-size:17px;margin:22px 0 10px;display:flex;align-items:center;gap:8px;}
+  h2.sec-title:first-child{margin-top:0;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+  }
+
+  .timeline{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .tl-item{display:flex;gap:12px;}
+  .tl-rail{display:flex;flex-direction:column;align-items:center;width:22px;flex:0 0 auto;}
+  .tl-dot{width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--dotc,var(--teal));background:var(--dotc,var(--teal));flex:0 0 auto;margin-top:2px;}
+  .tl-line{width:2px;flex:1;background:repeating-linear-gradient(to bottom,var(--line) 0 4px,transparent 4px 8px);min-height:26px;margin:2px 0;}
+  .tl-content{flex:1;padding-bottom:14px;}
+  .tl-content:last-child{padding-bottom:0;}
+  .tl-name{font-weight:800;font-size:14.5px;}
+  .tl-meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+  .tl-flight{font-size:12px;color:var(--teal-deep);background:var(--sand-2);display:inline-block;padding:3px 9px;border-radius:8px;margin:6px 0 14px 0;}
+
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;}
+  .badge.ok{background:var(--green-ok-bg);color:var(--green-ok);}
+  .badge.warn{background:var(--amber-warn-bg);color:var(--amber-warn);}
+  .badge.todo{background:var(--coral-soft);color:var(--coral);}
+
+  .flight-card .route{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .flight-card .code{font-size:22px;font-weight:800;}
+  .flight-card .mid{flex:1;text-align:center;color:var(--ink-soft);font-size:12px;position:relative;}
+  .flight-card .mid .line{height:1px;background:var(--line);margin:6px 0;position:relative;}
+  .flight-card .mid .line:after{content:"✈";position:absolute;right:0;top:-9px;font-size:12px;}
+  .flight-card .time{font-size:20px;font-weight:800;color:var(--teal-deep);}
+  .flight-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:12.5px;color:var(--ink-soft);}
+  .flight-meta span{background:var(--sand-2);padding:3px 9px;border-radius:8px;}
+  .flight-card .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+
+  .day-card summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:700;
+  }
+  .day-card summary::-webkit-details-marker{display:none;}
+  .day-card summary .daynum{
+    background:var(--coral);color:#fff;font-size:12px;font-weight:800;
+    border-radius:8px;padding:4px 8px;flex:0 0 auto;
+  }
+  .day-card summary .daytitle{flex:1;}
+  .day-card summary .daydate{font-size:12px;color:var(--ink-soft);font-weight:600;}
+  .day-card[open] summary{margin-bottom:10px;}
+  .day-card .body{font-size:14px;color:var(--ink);}
+  .day-card .body p{margin:6px 0;}
+  .tag{display:inline-block;font-size:11.5px;background:var(--sand-2);color:var(--ink-soft);padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0;}
+  .chip-opt{border:1px dashed var(--teal);background:var(--card);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:13px;}
+  .chip-opt b{color:var(--teal-deep);}
+
+  .hotel-card h3{margin:0 0 4px;font-size:15.5px;}
+  .hotel-card .addr{font-size:13px;color:var(--ink-soft);margin-bottom:8px;}
+  .hotel-card .dates{display:flex;gap:16px;font-size:13px;margin:8px 0;}
+  .hotel-card .dates div b{display:block;font-size:14px;}
+  .note{
+    background:var(--amber-warn-bg);color:var(--amber-warn);
+    border-radius:10px;padding:8px 10px;font-size:12.5px;margin-top:8px;
+  }
+
+  .checklist label{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;margin-bottom:8px;}
+  .checklist input{margin-top:3px;}
+
+  footer{margin-top:30px;text-align:center;font-size:12px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">2026 · 4人 · 全自助</div>
+    <h1 class="hero-title">泰国四人行</h1>
+    <div class="hero-sub">2026.9.18(五) — 9.28(一) · 11天10晚</div>
+    <div class="hero-route">
+      <span class="node">吉隆坡</span><span class="arrow">→</span>
+      <span class="node">普吉岛·卡伦海滩</span><span class="arrow">→</span>
+      <span class="node">清迈</span><span class="arrow">→</span>
+      <span class="node">曼谷</span><span class="arrow">→</span>
+      <span class="node">香港/回国</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat-pill"><b>4/4</b>段机票已出票</div>
+      <div class="stat-pill"><b>3/3</b>住宿已订</div>
+      <div class="stat-pill"><b>1</b>件事待确认</div>
+      <div class="stat-pill"><b>11天</b>10晚</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <button data-tab="overview" class="active">总览</button>
+    <button data-tab="flights">机票</button>
+    <button data-tab="itinerary">每日行程</button>
+    <button data-tab="hotels">住宿</button>
+    <button data-tab="tips">实用贴士</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- 总览 -->
+  <section class="panel active" id="overview">
+    <h2 class="sec-title">🗺️ 路线总览</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot" style="--dotc:#5b6b76"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-name">🇲🇾 吉隆坡</div>
+          <div class="tl-meta">出发地 · 9/18 周五</div>
+          <div class="tl-flight">✈ OD540 · 12:00 → 12:30 · 1h30m</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot" style="--dotc:#0f7d8c"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-name">🇹🇭 普吉岛 · 卡伦海滩</div>
+          <div class="tl-meta">9/18 – 9/22 · 4晚</div>
+          <div class="tl-flight">✈ VZ417 · 13:40 → 15:50 · 2h10m</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot" style="--dotc:#e0a640"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-name">🇹🇭 清迈</div>
+          <div class="tl-meta">9/22 – 9/24 · 2晚</div>
+          <div class="tl-flight">✈ VZ117 · 20:35 → 22:00 · 1h25m</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot" style="--dotc:#ef6a4c"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-name">🇹🇭 曼谷</div>
+          <div class="tl-meta">9/24 – 9/28 · 4晚</div>
+          <div class="tl-flight">✈ SL364(DMK)· 15:25 → 19:15 · 2h50m</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-rail"><div class="tl-dot" style="--dotc:#5b6b76"></div></div>
+        <div class="tl-content">
+          <div class="tl-name">🇭🇰 香港 → 回国</div>
+          <div class="tl-meta">9/28 周一</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <b>行程节奏</b>
+      <p style="margin:8px 0 0;font-size:13.5px;color:var(--ink-soft)">
+        普吉岛卡伦海滩 4晚 → 清迈 2晚 → 曼谷 4晚。三段机票全部为泰国越捷/马来西亚亚航系,均为短途廉航,注意托运行李额度(见机票页)。
+      </p>
+    </div>
+    <div class="card">
+      <b>待办事项</b>
+      <ul style="margin:8px 0 0;padding-left:18px;font-size:13.5px;">
+        <li>⚠️ 确认卡伦海滩酒店"两卧室套房"是否能住4人(订单显示"可住2成人",详见住宿页)</li>
+        <li>⚠️ 回程航班从<b>廊曼机场(DMK)</b>起飞,和落地曼谷时的素万那普机场(BKK)不是同一个机场,两机场间车程约1小时,9/28当天记得预留足够时间换机场</li>
+        <li>📌 联系清迈房东 Panai:告知约17:30-18:00到达(比标准14:00入住晚)</li>
+        <li>📌 联系曼谷房东 Peter:告知约23:00左右到达,确认入住/取钥匙方式</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 机票 -->
+  <section class="panel" id="flights">
+    <h2 class="sec-title">✈️ 航班信息</h2>
+
+    <div class="card flight-card">
+      <div class="top-row">
+        <span class="badge ok">已出票</span>
+        <span style="font-size:12.5px;color:var(--ink-soft)">9/18 周五</span>
+      </div>
+      <div class="route">
+        <div><div class="code">KUL</div><div class="time">12:00</div></div>
+        <div class="mid"><div>1h30m</div><div class="line"></div><div>OD540</div></div>
+        <div style="text-align:right"><div class="code">HKT</div><div class="time">12:30</div></div>
+      </div>
+      <div class="flight-meta">
+        <span>马来西亚亚航 Malindo Air</span>
+        <span>吉隆坡T1 → 普吉国际机场 I</span>
+        <span>票号 8162138767950</span>
+        <span>注:有1小时时差,实际飞行1.5小时</span>
+      </div>
+    </div>
+
+    <div class="card flight-card">
+      <div class="top-row">
+        <span class="badge ok">已出票</span>
+        <span style="font-size:12.5px;color:var(--ink-soft)">9/22 周二</span>
+      </div>
+      <div class="route">
+        <div><div class="code">HKT</div><div class="time">13:40</div></div>
+        <div class="mid"><div>2h10m</div><div class="line"></div><div>VZ417</div></div>
+        <div style="text-align:right"><div class="code">CNX</div><div class="time">15:50</div></div>
+      </div>
+      <div class="flight-meta">
+        <span>泰国越捷航空 Thai VietJet</span>
+        <span>普吉机场D → 清迈机场D</span>
+        <span>无免费托运行李,需自行加购</span>
+      </div>
+    </div>
+
+    <div class="card flight-card">
+      <div class="top-row">
+        <span class="badge ok">已出票</span>
+        <span style="font-size:12.5px;color:var(--ink-soft)">9/24 周四</span>
+      </div>
+      <div class="route">
+        <div><div class="code">CNX</div><div class="time">20:35</div></div>
+        <div class="mid"><div>1h25m</div><div class="line"></div><div>VZ117</div></div>
+        <div style="text-align:right"><div class="code">BKK</div><div class="time">22:00</div></div>
+      </div>
+      <div class="flight-meta">
+        <span>泰国越捷航空 Thai VietJet</span>
+        <span>清迈机场D → 素万那普机场</span>
+        <span>无免费托运行李,需自行加购</span>
+        <span>落地已22点,建议提前订好接机/Grab</span>
+      </div>
+    </div>
+
+    <div class="card flight-card">
+      <div class="top-row">
+        <span class="badge ok">已出票</span>
+        <span style="font-size:12.5px;color:var(--ink-soft)">9/28 周一</span>
+      </div>
+      <div class="route">
+        <div><div class="code">DMK</div><div class="time">15:25</div></div>
+        <div class="mid"><div>2h50m</div><div class="line"></div><div>SL364</div></div>
+        <div style="text-align:right"><div class="code">HKG</div><div class="time">19:15</div></div>
+      </div>
+      <div class="flight-meta">
+        <span>泰国狮子航空 Thai Lion Air</span>
+        <span>廊曼国际机场T1 → 香港国际机场T1</span>
+        <span>无免费托运行李,需自行加购</span>
+        <span style="background:var(--amber-warn-bg);color:var(--amber-warn);">⚠️ 出发机场是廊曼(DMK),不是落地曼谷时的素万那普(BKK),两机场车程约1小时</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 每日行程 -->
+  <section class="panel" id="itinerary">
+    <h2 class="sec-title">📅 每日行程</h2>
+
+    <details class="day-card" open>
+      <summary><span class="daynum">D1</span><span class="daytitle">吉隆坡 → 普吉岛 · 卡伦海滩</span><span class="daydate">9/18 周五</span></summary>
+      <div class="body">
+        <p>上午吉隆坡机场办理登机,航班 <b>OD540 12:00</b> 起飞;<b>12:30(泰国时间)</b>抵达普吉国际机场(HKT)。中泰互免签证,凭6个月以上有效期护照直接入境,可停留30天。</p>
+        <p>机场→卡伦海滩酒店车程约35-45分钟。The Proud Karon Beach 酒店提供接送机服务,建议提前在飞猪订单里联系酒店预约(见住宿页"酒店提供接送机服务")。</p>
+        <p>15:00起可办理入住,晚上先在卡伦海滩散步、看日落,附近海鲜大排档吃接风饭,早点休息倒时差(泰国比中国慢1小时)。</p>
+        <span class="tag">落地签免签</span><span class="tag">酒店接机</span><span class="tag">海边晚餐</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D2</span><span class="daytitle">卡伦海滩 · 出海或悠闲二选一</span><span class="daydate">9/19 周六</span></summary>
+      <div class="body">
+        <div class="chip-opt"><b>方案A · 皮皮岛跳岛一日游</b><br>码头集合较早(约7点前),浮潜+快艇跳岛,玛雅湾/猴子海滩,傍晚返回酒店,体力消耗较大。</div>
+        <div class="chip-opt"><b>方案B · 海滩悠闲日</b><br>上午睡到自然醒,酒店泳池/沙滩躺平,下午打车去芭东(Patong)逛街吃饭,邦拉街(Bangla Road)感受夜生活。</div>
+        <p style="margin-top:8px;font-size:13px;color:var(--ink-soft)">建议四人提前投票选一个,出海需要提前一天在网上订票。</p>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D3</span><span class="daytitle">水上运动 + 大佛 & 神仙半岛日落</span><span class="daydate">9/20 周日</span></summary>
+      <div class="body">
+        <p>9月普吉正值西南季风季,卡伦海滩浪况适合冲浪/学冲浪,上午可在沙滩边租板体验(有教学摊位)。</p>
+        <p>下午前往<b>普吉大佛(Big Buddha)</b>,免费参观(建议捐些小费),可俯瞰全岛;傍晚到<b>神仙半岛(Promthep Cape)</b>看日落,是普吉最佳日落点之一。两地车程接近,可包一辆双条车/Grab连着跑。</p>
+        <span class="tag">冲浪</span><span class="tag">大佛</span><span class="tag">日落打卡</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D4</span><span class="daytitle">普吉老城 + SPA自由日</span><span class="daydate">9/21 周一</span></summary>
+      <div class="body">
+        <p>上午自由活动,酒店泳池躺平或安排一场泰式SPA放松。下午打车去<b>普吉老城(Phuket Old Town)</b>,逛中葡混合风格的彩色老街(Thalang路、Romanee路),拍照、喝咖啡。</p>
+        <p>晚上早点收拾行李,为次日退房转机做准备。</p>
+        <span class="tag">SPA</span><span class="tag">老城拍照</span><span class="tag">收拾行李</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D5</span><span class="daytitle">普吉岛 → 清迈</span><span class="daydate">9/22 周二</span></summary>
+      <div class="body">
+        <p>12:00前退房(The Proud Karon Beach),建议预留2小时前往普吉机场。<b>13:40 VZ417</b> 起飞,<b>15:50</b> 抵达清迈(CNX)。</p>
+        <p>Airbnb房源标准入住时间14:00,但预计17:30-18:00才能到,记得提前在Airbnb里给房东 <b>Panai</b> 发消息说明实际到达时间。房源在宁曼路以北、护城河外,靠近清迈内环路(地址:60 Sukkasame Road soi4)。</p>
+        <p>放下行李后可以先在附近觅食,清迈物价友好,街边泰北菜、咖喱面(Khao Soi)值得一试。</p>
+        <span class="tag">转场日</span><span class="tag">提前联系房东</span><span class="tag">Khao Soi</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D6</span><span class="daytitle">双龙寺 · 古城寺庙 · 宁曼路</span><span class="daydate">9/23 周三</span></summary>
+      <div class="body">
+        <p>上午上山参观<b>双龙寺(Wat Phra That Doi Suthep)</b>,清迈地标,可俯瞰全城,山路建议包车或拼双条车往返。想更从容可以换成<b>大象保护营</b>(选不骑乘、只喂食洗澡的伦理营地,需提前一天预订)。</p>
+        <p>下午回古城逛<b>帕辛寺(Wat Phra Singh)</b>、<b>清曼寺(Wat Chiang Man)</b>,古城城墙、护城河边拍照。</p>
+        <p>晚上回<b>宁曼路(Nimman)</b>商圈,网红咖啡馆、设计感小店、酒吧一条街。注:清迈最有名的周六夜市/周日步行街这两天都赶不上,可以改逛<b>昌普门夜市(Chang Puak Gate)</b>,几乎天天营业,烤鸡出名。</p>
+        <span class="tag">双龙寺</span><span class="tag">古城</span><span class="tag">宁曼路</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D7</span><span class="daytitle">清迈 → 曼谷</span><span class="daydate">9/24 周四</span></summary>
+      <div class="body">
+        <p>12:00前退房,白天可以把行李寄存在民宿或就近咖啡馆,再去瓦洛洛市场(Warorot Market)扫最后一波手信,或古城里再逛逛。</p>
+        <p>傍晚前往清迈机场,<b>20:35 VZ117</b> 起飞,<b>22:00</b> 抵达曼谷素万那普机场(BKK)。落地已是夜里,建议提前订好接机或落地后直接叫Grab,车程约40-50分钟到Sukhumvit 77(Artemis公寓)。</p>
+        <p>记得提前给曼谷房东 <b>Peter</b> 发消息说明23点左右到达,确认取钥匙/门禁方式(订单显示"请联系房东了解如何入住")。</p>
+        <span class="tag">转场日</span><span class="tag">夜间抵达</span><span class="tag">提前联系房东</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D8</span><span class="daytitle">大皇宫 · 卧佛寺 · 郑王庙</span><span class="daydate">9/25 周五</span></summary>
+      <div class="body">
+        <p>一早前往<b>大皇宫(Grand Palace)</b>+玉佛寺,人多建议开门前后到达;步行至<b>卧佛寺(Wat Pho)</b>看巨型卧佛;坐摆渡船过河到<b>郑王庙(Wat Arun)</b>拍日落剪影。</p>
+        <p>注意大皇宫有着装要求(不能穿短裤、无袖上衣),建议穿长裤/长裙。</p>
+        <p>晚上可去<b>考山路(Khao San Road)</b>感受背包客夜生活,或找一家河边餐厅吃泰餐。</p>
+        <span class="tag">大皇宫</span><span class="tag">着装要求</span><span class="tag">考山路</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D9</span><span class="daytitle">恰图恰周末市场</span><span class="daydate">9/26 周六</span></summary>
+      <div class="body">
+        <p>正好赶上周末!<b>恰图恰周末市场(Chatuchak Weekend Market)</b>只在周六周日营业,上万个摊位,买手作、服饰、家居、小吃,建议一早去避开正午高温和人潮,坐BTS到Mo Chit站/Chatuchak Park站最方便。</p>
+        <p>时间和体力充足的话,也可以把这天换成<b>大城府(Ayutthaya)</b>古迹一日游(古城遗址,曼谷北边约1.5小时车程)。</p>
+        <p>晚上想体验一下夜景可以去高空酒吧(Sky Bar/Vertigo等),看个人预算安排。</p>
+        <span class="tag">恰图恰市场</span><span class="tag">周末限定</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D10</span><span class="daytitle">水上市场 + 市区购物收尾</span><span class="daydate">9/27 周日</span></summary>
+      <div class="body">
+        <p>周日适合安排<b>安帕瓦水上市场(Amphawa)</b>或<b>丹嫩沙朵水上市场(Damnoen Saduak)</b>半日游,坐小船逛河上摊贩,体验传统泰式水上集市(建议跟当地一日团,车程1.5-2小时)。</p>
+        <p>下午回市区,<b>暹罗商圈(Siam Paragon / CentralWorld / Siam Square)</b>做最后的购物和退税准备,晚上找一家喜欢的泰餐厅吃告别晚餐。</p>
+        <span class="tag">水上市场</span><span class="tag">暹罗商圈</span><span class="tag">退税</span>
+      </div>
+    </details>
+
+    <details class="day-card">
+      <summary><span class="daynum">D11</span><span class="daytitle">曼谷 → 香港 → 回国</span><span class="daydate">9/28 周一</span></summary>
+      <div class="body">
+        <p>11:00前退房(Artemis Sukhumvit 77)。⚠️ 注意回程航班是从<b>廊曼机场(DMK)</b>起飞,不是落地时的素万那普机场(BKK),两个机场之间车程约1小时,市区去廊曼也要预留时间,建议中午前后就出发去机场,留足2.5-3小时。</p>
+        <p><b>15:25 SL364</b>(泰国狮子航空)起飞,<b>19:15</b>抵达香港(HKG),航程2小时50分,无免费托运行李,行李较多建议提前加购。抵达香港后再转乘回国内的交通。</p>
+        <p>出境前记得确认购物退税(机场VAT Refund柜台在值机前办理,退税品需未拆封)。</p>
+        <span class="tag">退房</span><span class="tag">换机场</span><span class="tag">退税</span><span class="tag">转香港回国</span>
+      </div>
+    </details>
+  </section>
+
+  <!-- 住宿 -->
+  <section class="panel" id="hotels">
+    <h2 class="sec-title">🏨 住宿信息</h2>
+
+    <div class="card hotel-card">
+      <span class="badge ok">已预订 · 飞猪</span>
+      <h3>The Proud Karon Beach Phuket Trademark Collection by Wyndham</h3>
+      <div class="addr">2 Patak Soi 24, Karon Subdistrict, Muang Phuket, 泰国</div>
+      <div class="dates">
+        <div>入住<b>9/18 周五 15:00后</b></div>
+        <div>离店<b>9/22 周二 12:00前</b></div>
+      </div>
+      <div>两卧室套房 · 1间 · 4晚 · 60㎡ · 含早(2份/天)</div>
+      <div class="note">⚠️ 订单页显示该房型"可住2成人",但你们是4人入住"两卧室套房"。建议出发前通过飞猪客服或酒店在线联系确认:是否默认可住4人、需不需要补加人费用,避免到店被要求加床/加收费用。酒店支持接送机服务,建议提前预约。</div>
+    </div>
+
+    <div class="card hotel-card">
+      <span class="badge ok">已预订 · Airbnb</span>
+      <h3>清迈市直辖区的房源 · N&N的舒适房源@宁曼</h3>
+      <div class="addr">60 Sukkasame Road soi4, Chang Wat Chiang Mai 50200, 泰国 · 房东 Panai</div>
+      <div class="dates">
+        <div>入住<b>9/22 周二 14:00</b></div>
+        <div>退房<b>9/24 周四 12:00</b></div>
+      </div>
+      <div class="note">📌 航班15:50才落地清迈,预计17:30左右才能到达,比标准入住时间晚,记得提前在Airbnb消息里告知房东 Panai。</div>
+    </div>
+
+    <div class="card hotel-card">
+      <span class="badge ok">已预订 · Airbnb</span>
+      <h3>萱銮区的房源 · Artemis Sukhumvit 77</h3>
+      <div class="addr">Artemis Sukhumvit 77, 萱銮区, 曼谷直辖市 10250, 泰国 · 房东 Peter</div>
+      <div class="dates">
+        <div>入住<b>9/24 周四 15:00</b></div>
+        <div>退房<b>9/28 周一 11:00</b></div>
+      </div>
+      <div class="note">📌 航班22:00才落地曼谷,预计23点左右到达,订单显示"请联系房东了解如何入住",务必提前跟 Peter 确认深夜取钥匙/门禁方式。</div>
+    </div>
+  </section>
+
+  <!-- 实用贴士 -->
+  <section class="panel" id="tips">
+    <h2 class="sec-title">📝 实用贴士</h2>
+
+    <div class="card">
+      <b>签证 & 入境</b>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 0;">中泰互免签证,持有效期6个月以上的中国护照可直接入境泰国,单次最长停留30天,本行程11天完全没问题。入境时建议准备好回程/联程机票信息以备查验。</p>
+    </div>
+
+    <div class="card">
+      <b>货币 & 消费</b>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 0;">当地货币为泰铢(THB),汇率浮动较大,出发前用支付宝/微信或XE App查实时汇率。机场换汇通常汇率不划算,可以到市区换汇店或直接用境外POS/取现卡消费。</p>
+    </div>
+
+    <div class="card">
+      <b>交通 App</b>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 0;">三个城市都能用 <b>Grab</b> 打车,比路边拦车更安全透明;曼谷市区也可以用BTS/MRT地铁,避开路面堵车。建议出发前下载好Grab并绑定境外支付方式。</p>
+    </div>
+
+    <div class="card">
+      <b>网络 & 插座</b>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 0;">建议出发前买好泰国eSIM或机场取实体卡。插座为Type A/C/O,220V,和国内插座大多兼容,但建议带一个万能转换头以防万一。</p>
+    </div>
+
+    <div class="card">
+      <b>紧急联系</b>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 0;">泰国旅游警察热线 <b>1155</b>(有英语服务);国内可联系中国驻泰国使领馆领事保护与协助电线。建议出发前买一份境外旅行保险。</p>
+    </div>
+
+    <div class="card checklist">
+      <b>行前待办清单</b>
+      <div style="margin-top:10px;">
+        <label><input type="checkbox"> 确认卡伦海滩酒店房型是否够4人入住</label>
+        <label><input type="checkbox"> 记住9/28回程要去廊曼机场(DMK),不是素万那普(BKK)</label>
+        <label><input type="checkbox"> 联系清迈房东 Panai 告知实际到达时间</label>
+        <label><input type="checkbox"> 联系曼谷房东 Peter 确认深夜入住方式</label>
+        <label><input type="checkbox"> 预约普吉酒店机场接送服务</label>
+        <label><input type="checkbox"> 护照有效期6个月以上(4人都检查)</label>
+        <label><input type="checkbox"> 购买境外旅行保险</label>
+        <label><input type="checkbox"> 下载 Grab,绑定境外支付</label>
+        <label><input type="checkbox"> 购买当地eSIM/上网卡</label>
+        <label><input type="checkbox"> 准备好现金/多币种卡应急</label>
+      </div>
+    </div>
+
+    <div class="card" style="font-size:12.5px;color:var(--ink-soft);">
+      💡 这份攻略由 AI 根据你提供的机票/酒店订单整理生成,时间、航班号、地址等信息已逐条核对,但具体游玩安排、开放时间、价格建议出发前再用官方渠道确认一遍,尤其是需要预约的项目(出海、大象营、水上市场一日团等)。
+    </div>
+  </section>
+
+</main>
+
+<footer>更新于 2026 · 泰国四人行攻略 · 祝旅途愉快 🌴</footer>
+
+<script>
+  // Tabs
+  var tabs = document.querySelectorAll('nav.tabs button');
+  var panels = document.querySelectorAll('section.panel');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
